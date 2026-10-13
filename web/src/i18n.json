@@ -1,0 +1,382 @@
+{
+ "Appuyez sur n'importe quelle touche de votre clavier": [
+  "Press any key on your keyboard",
+  "Premi un tasto qualsiasi della tastiera",
+  "Pulsa cualquier tecla del teclado"
+ ],
+ "Touche détectée : {name}": [
+  "Detected key: {name}",
+  "Tasto rilevato: {name}",
+  "Tecla detectada: {name}"
+ ],
+ "{name} (caractère '{c}')": [
+  "{name} (character '{c}')",
+  "{name} (carattere '{c}')",
+  "{name} (carácter '{c}')"
+ ],
+ "non reconnue": [
+  "not recognized",
+  "non riconosciuto",
+  "no reconocida"
+ ],
+ "Format .ini court : {value}": [
+  "Short .ini format: {value}",
+  "Formato .ini breve: {value}",
+  "Formato .ini corto: {value}"
+ ],
+ "Code décimal : {value}": [
+  "Decimal code: {value}",
+  "Codice decimale: {value}",
+  "Código decimal: {value}"
+ ],
+ "ImGuiKey : {value}": [
+  "ImGuiKey: {value}",
+  "ImGuiKey: {value}",
+  "ImGuiKey: {value}"
+ ],
+ "Accord ImGui : {value}": [
+  "ImGui chord: {value}",
+  "Combinazione ImGui: {value}",
+  "Combinación ImGui: {value}"
+ ],
+ "aucun": [
+  "none",
+  "nessuno",
+  "ninguno"
+ ],
+ "aucune": [
+  "none",
+  "nessuno",
+  "ninguna"
+ ],
+ "Codes DirectInput et ImGuiKey, selon la position physique de la touche (comme sous Windows).": [
+  "DirectInput and ImGuiKey codes, based on the key's physical position (as on Windows).",
+  "Codici DirectInput e ImGuiKey, in base alla posizione fisica del tasto (come su Windows).",
+  "Códigos DirectInput e ImGuiKey, según la posición física de la tecla (como en Windows)."
+ ],
+ "Langue : {name}": [
+  "Language: {name}",
+  "Lingua: {name}",
+  "Idioma: {name}"
+ ],
+ "Automatique ({lang})": [
+  "Automatic ({lang})",
+  "Automatica ({lang})",
+  "Automático ({lang})"
+ ],
+ "Échap": [
+  "Esc",
+  "Esc",
+  "Esc"
+ ],
+ "Moins": [
+  "Minus",
+  "Meno",
+  "Menos"
+ ],
+ "Égal": [
+  "Equals",
+  "Uguale",
+  "Igual"
+ ],
+ "Retour arrière": [
+  "Backspace",
+  "Backspace",
+  "Retroceso"
+ ],
+ "Crochet gauche": [
+  "Left bracket",
+  "Parentesi quadra sinistra",
+  "Corchete izquierdo"
+ ],
+ "Crochet droit": [
+  "Right bracket",
+  "Parentesi quadra destra",
+  "Corchete derecho"
+ ],
+ "Entrée": [
+  "Enter",
+  "Invio",
+  "Intro"
+ ],
+ "Ctrl gauche": [
+  "Left Ctrl",
+  "Ctrl sinistro",
+  "Ctrl izquierdo"
+ ],
+ "Ctrl droit": [
+  "Right Ctrl",
+  "Ctrl destro",
+  "Ctrl derecho"
+ ],
+ "Point-virgule": [
+  "Semicolon",
+  "Punto e virgola",
+  "Punto y coma"
+ ],
+ "Apostrophe": [
+  "Apostrophe",
+  "Apostrofo",
+  "Apóstrofo"
+ ],
+ "Grave": [
+  "Grave accent",
+  "Accento grave",
+  "Acento grave"
+ ],
+ "Maj gauche": [
+  "Left Shift",
+  "Maiusc sinistro",
+  "Mayús izquierda"
+ ],
+ "Maj droite": [
+  "Right Shift",
+  "Maiusc destro",
+  "Mayús derecha"
+ ],
+ "Barre oblique inverse": [
+  "Backslash",
+  "Barra rovesciata",
+  "Barra invertida"
+ ],
+ "Virgule": [
+  "Comma",
+  "Virgola",
+  "Coma"
+ ],
+ "Point": [
+  "Period",
+  "Punto",
+  "Punto"
+ ],
+ "Barre oblique": [
+  "Slash",
+  "Barra",
+  "Barra"
+ ],
+ "Alt gauche (Option)": [
+  "Left Alt (Option)",
+  "Alt sinistro (Opzione)",
+  "Alt izquierdo (Opción)"
+ ],
+ "Alt droit (Option)": [
+  "Right Alt (Option)",
+  "Alt destro (Opzione)",
+  "Alt derecho (Opción)"
+ ],
+ "Espace": [
+  "Space",
+  "Spazio",
+  "Espacio"
+ ],
+ "Verr. Maj": [
+  "Caps Lock",
+  "Bloc Maiusc",
+  "Bloq Mayús"
+ ],
+ "Verr. Num (Clear)": [
+  "Num Lock (Clear)",
+  "Bloc Num (Clear)",
+  "Bloq Num (Clear)"
+ ],
+ "Arrêt défil": [
+  "Scroll Lock",
+  "Bloc Scorr",
+  "Bloq Despl"
+ ],
+ "Début": [
+  "Home",
+  "Home",
+  "Inicio"
+ ],
+ "Fin": [
+  "End",
+  "Fine",
+  "Fin"
+ ],
+ "Page haut": [
+  "Page Up",
+  "Pag su",
+  "Re Pág"
+ ],
+ "Page bas": [
+  "Page Down",
+  "Pag giù",
+  "Av Pág"
+ ],
+ "Flèche haut": [
+  "Up arrow",
+  "Freccia su",
+  "Flecha arriba"
+ ],
+ "Flèche bas": [
+  "Down arrow",
+  "Freccia giù",
+  "Flecha abajo"
+ ],
+ "Flèche gauche": [
+  "Left arrow",
+  "Freccia sinistra",
+  "Flecha izquierda"
+ ],
+ "Flèche droite": [
+  "Right arrow",
+  "Freccia destra",
+  "Flecha derecha"
+ ],
+ "Insert": [
+  "Insert",
+  "Ins",
+  "Insert"
+ ],
+ "Insert (Help)": [
+  "Insert (Help)",
+  "Ins (Help)",
+  "Insert (Help)"
+ ],
+ "Suppr": [
+  "Delete",
+  "Canc",
+  "Supr"
+ ],
+ "Windows gauche (Cmd)": [
+  "Left Windows (Cmd)",
+  "Windows sinistro (Cmd)",
+  "Windows izquierda (Cmd)"
+ ],
+ "Windows droite (Cmd)": [
+  "Right Windows (Cmd)",
+  "Windows destro (Cmd)",
+  "Windows derecha (Cmd)"
+ ],
+ "Touche < >": [
+  "< > key",
+  "Tasto < >",
+  "Tecla < >"
+ ],
+ "Pavé 0": [
+  "Numpad 0",
+  "Tastierino 0",
+  "Teclado num. 0"
+ ],
+ "Pavé 1": [
+  "Numpad 1",
+  "Tastierino 1",
+  "Teclado num. 1"
+ ],
+ "Pavé 2": [
+  "Numpad 2",
+  "Tastierino 2",
+  "Teclado num. 2"
+ ],
+ "Pavé 3": [
+  "Numpad 3",
+  "Tastierino 3",
+  "Teclado num. 3"
+ ],
+ "Pavé 4": [
+  "Numpad 4",
+  "Tastierino 4",
+  "Teclado num. 4"
+ ],
+ "Pavé 5": [
+  "Numpad 5",
+  "Tastierino 5",
+  "Teclado num. 5"
+ ],
+ "Pavé 6": [
+  "Numpad 6",
+  "Tastierino 6",
+  "Teclado num. 6"
+ ],
+ "Pavé 7": [
+  "Numpad 7",
+  "Tastierino 7",
+  "Teclado num. 7"
+ ],
+ "Pavé 8": [
+  "Numpad 8",
+  "Tastierino 8",
+  "Teclado num. 8"
+ ],
+ "Pavé 9": [
+  "Numpad 9",
+  "Tastierino 9",
+  "Teclado num. 9"
+ ],
+ "Pavé .": [
+  "Numpad .",
+  "Tastierino .",
+  "Teclado num. ."
+ ],
+ "Pavé ×": [
+  "Numpad ×",
+  "Tastierino ×",
+  "Teclado num. ×"
+ ],
+ "Pavé −": [
+  "Numpad −",
+  "Tastierino −",
+  "Teclado num. −"
+ ],
+ "Pavé +": [
+  "Numpad +",
+  "Tastierino +",
+  "Teclado num. +"
+ ],
+ "Pavé =": [
+  "Numpad =",
+  "Tastierino =",
+  "Teclado num. ="
+ ],
+ "Pavé /": [
+  "Numpad /",
+  "Tastierino /",
+  "Teclado num. /"
+ ],
+ "Pavé Entrée": [
+  "Numpad Enter",
+  "Invio tastierino",
+  "Intro teclado num."
+ ],
+ "Clic gauche": [
+  "Left click",
+  "Clic sinistro",
+  "Clic izquierdo"
+ ],
+ "Clic droit": [
+  "Right click",
+  "Clic destro",
+  "Clic derecho"
+ ],
+ "Clic milieu": [
+  "Middle click",
+  "Clic centrale",
+  "Clic central"
+ ],
+ "Bouton souris 4": [
+  "Mouse button 4",
+  "Tasto mouse 4",
+  "Botón del ratón 4"
+ ],
+ "Bouton souris 5": [
+  "Mouse button 5",
+  "Tasto mouse 5",
+  "Botón del ratón 5"
+ ],
+ "Molette haut": [
+  "Wheel up",
+  "Rotellina su",
+  "Rueda arriba"
+ ],
+ "Molette bas": [
+  "Wheel down",
+  "Rotellina giù",
+  "Rueda abajo"
+ ],
+ "Molette horizontale": [
+  "Horizontal wheel",
+  "Rotellina orizzontale",
+  "Rueda horizontal"
+ ]
+}

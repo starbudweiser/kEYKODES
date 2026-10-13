@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/icon.png">
+<title>kEYKODES</title>
+<meta name="description" content="Affiche le code clavier au format .ini Skyrim et en décimal, avec sa valeur ImGuiKey.">
+</head>
+<body>
+<!-- Fenêtre de l'application, 750 × 400 comme dans Qt -->
+<main class="window" aria-label="kEYKODES">
+  <header class="head">
+    <h1 id="instruct">Appuyez sur n'importe quelle touche de votre clavier</h1>
+    <button class="lang" id="lang" type="button" aria-haspopup="menu" aria-expanded="false">🇫🇷</button>
+    <div class="lang-menu" id="lang-menu" role="menu" hidden></div>
+  </header>
+  <div class="values">
+    <p id="key-name">Touche détectée : —</p>
+    <p id="skyrim-hex">Format .ini court : —</p>
+    <p id="dec">Code décimal : —</p>
+    <p id="imgui">ImGuiKey : —</p>
+    <p id="chord">Accord ImGui : —</p>
+  </div>
+  <p class="hint" id="hint">Codes DirectInput et ImGuiKey, selon la position physique de la touche (comme sous Windows).</p>
+</main>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>
