@@ -12,7 +12,7 @@ import sys
 from pathlib import Path
 
 from PyQt6.QtCore import QLocale, Qt
-from PyQt6.QtGui import QActionGroup, QShortcut
+from PyQt6.QtGui import QActionGroup
 from PyQt6.QtWidgets import QApplication, QHBoxLayout, QLabel, QMenu, QPushButton, QVBoxLayout, QWidget
 
 import i18n
@@ -20,8 +20,7 @@ import socle_qt
 from i18n import L, N_
 
 # Réglages (langue choisie) : même emplacement que les autres applis
-# Taille des textes (zoom Socle, socle_qt.Zoom) : 1,25 par défaut. La fenêtre (750 × 400 à 100 %) suit le zoom.
-ZOOM_DEFAULT = 1.25
+# Fenêtre : 750 × 400 pour des textes à 100 %, mise à l'échelle des textes Socle (110 %).
 BASE_SIZE = (750, 400)
 CONFIG_FILE = Path.home() / "Library" / "Application Support" / "kEYKODES" / "config.json"
 AUTO = "auto"  # langue du système
@@ -173,20 +172,10 @@ class KeyCodeViewerApp(QWidget):
         self.btn_lang.setCursor(Qt.CursorShape.PointingHandCursor)
         self.btn_lang.setFocusPolicy(Qt.FocusPolicy.NoFocus)  # le clavier reste réservé à la détection
         self.btn_lang.clicked.connect(self._open_language_menu)
-        # Zoom Socle : boutons A− A+ seulement. Ses raccourcis ⌥/⌘ + − 0 sont coupés, sinon ces touches
-        # ne seraient plus détectées ; les boutons ne prennent pas le focus (Espace les déclencherait).
-        self.zoom = socle_qt.Zoom(self, default=ZOOM_DEFAULT)
-        for sc in self.findChildren(QShortcut):
-            sc.setEnabled(False)
-        self.zoom.changed.connect(self._zoom_changed)
-        self.zoom_box = self.zoom.controls()
-        for b in self.zoom_box.findChildren(QPushButton):
-            b.setFocusPolicy(Qt.FocusPolicy.NoFocus)
         self.head_right = QWidget()
         right = QHBoxLayout(self.head_right)
         right.setContentsMargins(0, 0, 0, 0)
         right.setSpacing(socle_qt.m("space-1"))
-        right.addWidget(self.zoom_box)
         right.addWidget(self.btn_lang)
         self.head_left = QWidget()  # titres centrés malgré les marges asymétriques (largeur fixée par _style)
         head = QHBoxLayout()
@@ -217,7 +206,7 @@ class KeyCodeViewerApp(QWidget):
         self.apply_texts()
 
     def _style(self):
-        """Tailles propres à l'appli (consigne, valeurs, drapeau) et de la fenêtre, à l'échelle du zoom."""
+        """Tailles propres à l'appli (consigne, valeurs, drapeau) et de la fenêtre, à l'échelle des textes Socle."""
         k = socle_qt.scale()
         px = lambda size: round(size * k)
         mono = socle_qt.font("mono").family()
@@ -237,12 +226,6 @@ class KeyCodeViewerApp(QWidget):
         self.head_right.adjustSize()
         self.head_left.setFixedWidth(max(0, self.head_right.sizeHint().width() - socle_qt.m("space-4")))
         self.setFixedSize(*(round(v * max(1.0, k)) for v in BASE_SIZE))
-
-    def _zoom_changed(self, value: float):
-        self.config["zoom"] = value
-        save_config(self.config)
-        self._style()
-        self.setFocus()
 
     # --- Langue ---
 
@@ -280,10 +263,6 @@ class KeyCodeViewerApp(QWidget):
         code = i18n.get_lang()
         self.btn_lang.setText(i18n.FLAGS[code])
         self.btn_lang.setToolTip(L("Langue : {name}", name=i18n.LANGS[code]))
-        smaller, bigger = self.zoom_box.findChildren(QPushButton)
-        smaller.setToolTip(L("Réduire les textes"))
-        bigger.setToolTip(L("Agrandir les textes"))
-        self.zoom_box.findChild(QLabel).setToolTip(L("Taille des textes"))
         self.label_instruct.setText(L("Appuyez sur n'importe quelle touche de votre clavier"))
         self.label_hint.setText(L("Codes DirectInput et ImGuiKey, selon la position physique de la touche (comme sous Windows)."))
         if self.last is None:
@@ -374,7 +353,6 @@ if __name__ == "__main__":
     choice = config.get("language", AUTO)
     i18n.set_lang(choice if choice in i18n.LANGS else detect_system_lang())
     socle_qt.apply(app)
-    socle_qt.set_scale(app, float(config.get("zoom", ZOOM_DEFAULT)))
     window = KeyCodeViewerApp(config)
     window.show()
     window.activateWindow()
