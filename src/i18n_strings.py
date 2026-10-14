@@ -18,6 +18,9 @@ TR = {
     "ImGuiKey : {value}": ("ImGuiKey: {value}", "ImGuiKey: {value}", "ImGuiKey: {value}"),
     "Accord ImGui : {value}": ("ImGui chord: {value}", "Combinazione ImGui: {value}", "Combinación ImGui: {value}"),
     "aucun": ("none", "nessuno", "ninguno"),
+    "Réduire les textes": ("Smaller text", "Testo più piccolo", "Texto más pequeño"),
+    "Agrandir les textes": ("Larger text", "Testo più grande", "Texto más grande"),
+    "Taille des textes": ("Text size", "Dimensione del testo", "Tamaño del texto"),
     "aucune": ("none", "nessuno", "ninguna"),
     "Codes DirectInput et ImGuiKey, selon la position physique de la touche (comme sous Windows).": (
         "DirectInput and ImGuiKey codes, based on the key's physical position (as on Windows).",
