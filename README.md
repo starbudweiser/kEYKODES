@@ -22,6 +22,13 @@ Many mods ask for key codes in their .ini files (DirectInput scancodes) or ImGui
 - Mouse buttons and wheel supported.
 - Interface in **English, French, Italian and Spanish** (follows your Mac's language; can be changed in the app).
 
+### What's new in 1.0.1
+
+
+### Updates
+
+From version 1.0.1 the app checks once a day whether a newer release exists on GitHub and offers to open the Nexus page, remind you later or skip that version. Nothing is downloaded or installed automatically. The full history is in [CHANGELOG.md](CHANGELOG.md).
+
 ### Screenshots
 
 ![Space bar: 0x39, decimal 57, ImGuiKey 524](docs/screenshots/02_key.png)
@@ -70,6 +77,13 @@ Beaucoup de mods demandent des codes de touches dans leurs .ini (scancodes Direc
 - Claviers AZERTY, QWERTZ, ISO et ANSI : le code suit la position physique.
 - Boutons et molette de la souris pris en charge.
 - Interface en **français, anglais, italien et espagnol** (suit la langue du Mac ; modifiable dans l'appli).
+
+### Nouveautés de la 1.0.1
+
+
+### Mises à jour
+
+À partir de la version 1.0.1, l'appli vérifie une fois par jour si une version plus récente existe sur GitHub et propose d'ouvrir la page Nexus, de rappeler plus tard ou d'ignorer cette version. Rien n'est téléchargé ni installé automatiquement. L'historique complet est dans [CHANGELOG.md](CHANGELOG.md).
 
 ### Captures d'écran
 
