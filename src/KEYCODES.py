@@ -354,6 +354,7 @@ if __name__ == "__main__":
     choice = config.get("language", AUTO)
     i18n.set_lang(choice if choice in i18n.LANGS else detect_system_lang())
     socle_qt.apply(app)
+    socle_qt.brand(app, "kEYKODES", "#a1a1aa")  # « k » dans le gris argent du logo
     window = KeyCodeViewerApp(config)
     window.show()
     update_check.start_qt(window, "kEYKODES", lang=i18n.get_lang)  # nouvelle version ? (au plus une fois par jour)
