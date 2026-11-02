@@ -17,7 +17,7 @@ from PyQt6.QtWidgets import QApplication, QHBoxLayout, QLabel, QMenu, QPushButto
 
 import i18n
 import socle_qt
-import update_check
+import updater
 from i18n import L, N_
 
 # Réglages (langue choisie) : même emplacement que les autres applis
@@ -357,7 +357,7 @@ if __name__ == "__main__":
     socle_qt.brand(app, "kEYKODES", "#a1a1aa")  # « k » dans le gris argent du logo
     window = KeyCodeViewerApp(config)
     window.show()
-    update_check.start_qt(window, "kEYKODES", lang=i18n.get_lang)  # nouvelle version ? (au plus une fois par jour)
+    updater.start_qt(window, "kEYKODES", lang=i18n.get_lang)  # nouvelle version ? (au plus une fois par jour)
     window.activateWindow()
     window.setFocus()
     sys.exit(app.exec())
