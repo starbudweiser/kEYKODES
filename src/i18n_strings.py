@@ -23,8 +23,6 @@ TR = {
         "DirectInput and ImGuiKey codes, based on the key's physical position (as on Windows).",
         "Codici DirectInput e ImGuiKey, in base alla posizione fisica del tasto (come su Windows).",
         "Códigos DirectInput e ImGuiKey, según la posición física de la tecla (como en Windows)."),
-    "Langue : {name}": ("Language: {name}", "Lingua: {name}", "Idioma: {name}"),
-    "Automatique ({lang})": ("Automatic ({lang})", "Automatica ({lang})", "Automático ({lang})"),
 
     # ------------------------------------------------------------ noms des touches
     "Échap": ("Esc", "Esc", "Esc"),

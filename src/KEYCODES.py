@@ -11,12 +11,12 @@ import json
 import sys
 from pathlib import Path
 
-from PyQt6.QtCore import QLocale, Qt
-from PyQt6.QtGui import QActionGroup
-from PyQt6.QtWidgets import QApplication, QHBoxLayout, QLabel, QMenu, QPushButton, QVBoxLayout, QWidget
+from PyQt6.QtCore import Qt
+from PyQt6.QtWidgets import QApplication, QHBoxLayout, QLabel, QVBoxLayout, QWidget
 
 import i18n
 import socle_qt
+import lang_menu
 import updater
 from i18n import L, N_
 
@@ -24,7 +24,6 @@ from i18n import L, N_
 # Fenêtre : 750 × 400 pour des textes à 100 %, mise à l'échelle des textes Socle (110 %).
 BASE_SIZE = (750, 400)
 CONFIG_FILE = Path.home() / "Library" / "Application Support" / "kEYKODES" / "config.json"
-AUTO = "auto"  # langue du système
 
 # Noms utilisés seulement par la preview web (touches absentes des claviers Mac)
 WEB_ONLY_NAMES = (N_("Arrêt défil"), N_("Insert"))
@@ -148,11 +147,6 @@ def save_config(data: dict) -> None:
         print(f"Config save failed: {e}", file=sys.stderr)
 
 
-def detect_system_lang() -> str:
-    """Langue de l'interface du Mac (Réglages > Général > Langue et région)."""
-    return i18n.system_lang(QLocale.system().uiLanguages())
-
-
 class KeyCodeViewerApp(QWidget):
     def __init__(self, config: dict):
         super().__init__()
@@ -166,24 +160,13 @@ class KeyCodeViewerApp(QWidget):
         layout.setContentsMargins(socle_qt.m("space-8"), socle_qt.m("space-4"), socle_qt.m("space-4"), socle_qt.m("space-6"))
         layout.setSpacing(socle_qt.m("space-2"))
 
-        # En-tête : consigne centrée, drapeau de la langue à droite
+        # En-tête : consigne centrée (la langue se choisit dans le menu « Langue » de la barre de menus)
         self.label_instruct = socle_qt.role(QLabel(), "muted")
-        self.btn_lang = QPushButton()
-        self.btn_lang.setObjectName("LangButton")
-        self.btn_lang.setCursor(Qt.CursorShape.PointingHandCursor)
-        self.btn_lang.setFocusPolicy(Qt.FocusPolicy.NoFocus)  # le clavier reste réservé à la détection
-        self.btn_lang.clicked.connect(self._open_language_menu)
-        self.head_right = QWidget()
-        right = QHBoxLayout(self.head_right)
-        right.setContentsMargins(0, 0, 0, 0)
-        right.setSpacing(socle_qt.m("space-1"))
-        right.addWidget(self.btn_lang)
-        self.head_left = QWidget()  # titres centrés malgré les marges asymétriques (largeur fixée par _style)
+        self.label_instruct.setAlignment(Qt.AlignmentFlag.AlignCenter)
         head = QHBoxLayout()
-        head.setContentsMargins(0, socle_qt.m("space-4"), 0, 0)
-        head.addWidget(self.head_left)
-        head.addWidget(self.label_instruct, 1, Qt.AlignmentFlag.AlignHCenter)
-        head.addWidget(self.head_right, 0, Qt.AlignmentFlag.AlignTop)
+        # marges de la fenêtre asymétriques (space-8 / space-4) : décalage pour centrer la consigne
+        head.setContentsMargins(0, socle_qt.m("space-4"), socle_qt.m("space-8") - socle_qt.m("space-4"), 0)
+        head.addWidget(self.label_instruct, 1)
         layout.addLayout(head)
         layout.addStretch(1)
 
@@ -207,7 +190,7 @@ class KeyCodeViewerApp(QWidget):
         self.apply_texts()
 
     def _style(self):
-        """Tailles propres à l'appli (consigne, valeurs, drapeau) et de la fenêtre, à l'échelle des textes Socle."""
+        """Tailles propres à l'appli (consigne, valeurs) et de la fenêtre, à l'échelle des textes Socle."""
         k = socle_qt.scale()
         px = lambda size: round(size * k)
         mono = socle_qt.font("mono").family()
@@ -216,54 +199,21 @@ class KeyCodeViewerApp(QWidget):
             f'QLabel#IniValue {{ font-family: "{mono}"; font-size: {px(32)}px; font-weight: 700; color: {socle_qt.c("accent-text")}; }}'
             f'QLabel#IniValue[status="danger"] {{ color: {socle_qt.c("danger")}; }}'
             f'QLabel#DecValue {{ font-family: "{mono}"; font-size: {px(18)}px; color: {socle_qt.c("text")}; }}'
-            f'QPushButton#LangButton {{ background: transparent; border: none; border-radius: {socle_qt.m("radius")}px;'
-            f' padding: 0; min-height: 0; font-size: {px(18)}px; }}'
-            f'QPushButton#LangButton:hover {{ background: {socle_qt.c("surface-hover")}; }}'
-            f'#HeadSide {{ background: transparent; }}'
         )
-        self.btn_lang.setFixedSize(px(18) + 12, px(18) + 8)
-        for w in (self.head_left, self.head_right):
-            w.setObjectName("HeadSide")
-        self.head_right.adjustSize()
-        self.head_left.setFixedWidth(max(0, self.head_right.sizeHint().width() - socle_qt.m("space-4")))
         self.setFixedSize(*(round(v * max(1.0, k)) for v in BASE_SIZE))
 
     # --- Langue ---
 
-    def _open_language_menu(self):
-        menu = QMenu(self)
-        group = QActionGroup(menu)
-        chosen = self.config.get("language", AUTO)
-        system = detect_system_lang()
-        auto = menu.addAction(L("Automatique ({lang})", lang=f"{i18n.FLAGS[system]} {i18n.LANGS[system]}"))
-        auto.setData(AUTO)
-        menu.addSeparator()
-        actions = [auto]
-        for code, name in i18n.LANGS.items():
-            act = menu.addAction(f"{i18n.FLAGS[code]}  {name}")
-            act.setData(code)
-            actions.append(act)
-        for act in actions:
-            act.setCheckable(True)
-            act.setChecked(act.data() == chosen)
-            group.addAction(act)
-        picked = menu.exec(self.btn_lang.mapToGlobal(self.btn_lang.rect().bottomLeft()))
-        if picked is not None:
-            self.set_language(picked.data())
-        self.setFocus()
-
     def set_language(self, choice: str):
-        """Change la langue (code ou AUTO), la mémorise et retraduit l'interface."""
-        self.config["language"] = choice
+        """Change la langue (code ou « auto »), la mémorise et retraduit l'interface."""
+        self.config["language"] = lang_menu.normalize_choice(choice)
         save_config(self.config)
-        i18n.set_lang(detect_system_lang() if choice == AUTO else choice)
+        i18n.set_lang(lang_menu.resolve(choice))
         self.apply_texts()
+        self.setFocus()  # le clavier reste réservé à la détection
 
     def apply_texts(self):
         """(Re)traduit tous les textes visibles dans la langue active."""
-        code = i18n.get_lang()
-        self.btn_lang.setText(i18n.FLAGS[code])
-        self.btn_lang.setToolTip(L("Langue : {name}", name=i18n.LANGS[code]))
         self.label_instruct.setText(L("Appuyez sur n'importe quelle touche de votre clavier"))
         self.label_hint.setText(L("Codes DirectInput et ImGuiKey, selon la position physique de la touche (comme sous Windows)."))
         if self.last is None:
@@ -351,11 +301,12 @@ class KeyCodeViewerApp(QWidget):
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     config = load_config()
-    choice = config.get("language", AUTO)
-    i18n.set_lang(choice if choice in i18n.LANGS else detect_system_lang())
+    i18n.set_lang(lang_menu.resolve(config.get("language")))
     socle_qt.apply(app)
     socle_qt.brand(app, "kEYKODES", "#a1a1aa")  # « k » dans le gris argent du logo
     window = KeyCodeViewerApp(config)
+    lang_menu.install_qt(window, lambda: config.get("language", lang_menu.AUTO), window.set_language,
+                         lambda code: None)  # menu « Langue » : set_language mémorise et retraduit
     window.show()
     updater.start_qt(window, "kEYKODES", lang=i18n.get_lang)  # nouvelle version ? (au plus une fois par jour)
     window.activateWindow()

@@ -1,6 +1,6 @@
 // Réplique web de src/KEYCODES.py : mêmes textes (mêmes clés de traduction), mêmes codes.
 import "./style.css";
-import { L, LANGS, FLAGS, getLang, setLang, systemLang } from "./i18n.js";
+import { L, LANGS, getLang, setLang, systemLang } from "./i18n.js";
 
 // Codes DirectInput (Skyrim .ini) par KeyboardEvent.code (position physique de la touche)
 const DIK = {
@@ -103,72 +103,17 @@ function show(name, code, imguiName, mods, char = "") {
 }
 
 // --- Langue ---
-
-const LANG_KEY = "keykodes-preview-lang";
-let langChoice = "auto";
+// L'appli la choisit dans son menu « Langue » (barre de menus macOS) ; la preview suit le navigateur,
+// ou le paramètre ?lang=fr|en|es|it pour les essais.
 
 function loadLangChoice() {
-  try {
-    langChoice = localStorage.getItem(LANG_KEY) || "auto";
-  } catch {
-    langChoice = "auto";
-  }
-  setLang(langChoice === "auto" ? systemLang() : langChoice);
-}
-
-function setLanguage(choice) {
-  langChoice = choice;
-  try {
-    localStorage.setItem(LANG_KEY, choice);
-  } catch {
-    /* préférence non mémorisée : sans gravité */
-  }
-  setLang(choice === "auto" ? systemLang() : choice);
-  applyTexts();
-}
-
-function buildLangMenu() {
-  const sys = systemLang();
-  const items = [["auto", L("Automatique ({lang})", { lang: `${FLAGS[sys]} ${LANGS[sys]}` })], null,
-    ...Object.entries(LANGS).map(([code, name]) => [code, `${FLAGS[code]}  ${name}`])];
-  $("lang-menu").replaceChildren(
-    ...items.map((item) => {
-      if (!item) return Object.assign(document.createElement("hr"), { className: "lang-menu__sep" });
-      const [code, label] = item;
-      const btn = document.createElement("button");
-      btn.type = "button";
-      btn.className = "lang-menu__item";
-      btn.setAttribute("role", "menuitemradio");
-      btn.setAttribute("aria-checked", String(code === langChoice));
-      btn.textContent = label;
-      btn.addEventListener("click", () => {
-        closeLangMenu();
-        setLanguage(code);
-      });
-      return btn;
-    }),
-  );
-}
-
-const langMenuOpen = () => !$("lang-menu").hidden;
-
-function openLangMenu() {
-  buildLangMenu();
-  $("lang-menu").hidden = false;
-  $("lang").setAttribute("aria-expanded", "true");
-}
-
-function closeLangMenu() {
-  $("lang-menu").hidden = true;
-  $("lang").setAttribute("aria-expanded", "false");
+  const asked = new URLSearchParams(location.search).get("lang");
+  setLang(asked in LANGS ? asked : systemLang());
 }
 
 function applyTexts() {
   const code = getLang();
   document.documentElement.lang = code;
-  $("lang").textContent = FLAGS[code];
-  $("lang").title = L("Langue : {name}", { name: LANGS[code] });
-  $("lang").setAttribute("aria-label", $("lang").title);
   $("instruct").textContent = L("Appuyez sur n'importe quelle touche de votre clavier");
   $("hint").textContent = L("Codes DirectInput et ImGuiKey, selon la position physique de la touche (comme sous Windows).");
   if (last) { show(...last); return; }
@@ -179,17 +124,12 @@ function applyTexts() {
   $("chord").textContent = L("Accord ImGui : {value}", { value: "—" });
 }
 
-// Le bouton et le menu des langues gardent leurs clics ; le clavier reste réservé à la détection
-$("lang").addEventListener("mousedown", (e) => e.stopPropagation());
-$("lang-menu").addEventListener("mousedown", (e) => e.stopPropagation());
-$("lang").addEventListener("click", () => (langMenuOpen() ? closeLangMenu() : openLangMenu()));
 
 loadLangChoice();
 applyTexts();
 
 window.addEventListener("keydown", (e) => {
   e.preventDefault();
-  if (langMenuOpen()) closeLangMenu();
   const char = e.key.length === 1 && e.key.trim() ? e.key : "";
   const found = DIK[e.code];
   if (!found) { show(null, null, null, [], char); return; }
@@ -199,7 +139,6 @@ window.addEventListener("keydown", (e) => {
 });
 
 window.addEventListener("mousedown", (e) => {
-  if (langMenuOpen()) { closeLangMenu(); return; }
   const found = MOUSE[e.button];
   if (!found) return;
   e.preventDefault();

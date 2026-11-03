@@ -44,21 +44,6 @@
   "nessuno",
   "ninguno"
  ],
- "Réduire les textes": [
-  "Smaller text",
-  "Testo più piccolo",
-  "Texto más pequeño"
- ],
- "Agrandir les textes": [
-  "Larger text",
-  "Testo più grande",
-  "Texto más grande"
- ],
- "Taille des textes": [
-  "Text size",
-  "Dimensione del testo",
-  "Tamaño del texto"
- ],
  "aucune": [
   "none",
   "nessuno",
@@ -68,16 +53,6 @@
   "DirectInput and ImGuiKey codes, based on the key's physical position (as on Windows).",
   "Codici DirectInput e ImGuiKey, in base alla posizione fisica del tasto (come su Windows).",
   "Códigos DirectInput e ImGuiKey, según la posición física de la tecla (como en Windows)."
- ],
- "Langue : {name}": [
-  "Language: {name}",
-  "Lingua: {name}",
-  "Idioma: {name}"
- ],
- "Automatique ({lang})": [
-  "Automatic ({lang})",
-  "Automatica ({lang})",
-  "Automático ({lang})"
  ],
  "Échap": [
   "Esc",
