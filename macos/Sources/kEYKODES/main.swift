@@ -42,7 +42,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         window.contentView = capture
         window.isReleasedWhenClosed = false
         window.backgroundColor = NSColor(Socle.C.bg)
-        window.center()
+        window.socleCenter()
         window.makeFirstResponder(capture)
         // Essais en arrière-plan : KEYKODES_QUIET=1 lance l'appli sans prendre le focus
         if ProcessInfo.processInfo.environment["KEYKODES_QUIET"] != nil {
