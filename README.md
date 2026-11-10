@@ -2,29 +2,21 @@
 
 # kEYKODES
 
-[![Listed on OpenMacApps](https://openmacapps.com/badge.svg)](https://openmacapps.com/apps/keykodes/)
+[![Listed on OpenMacApps](https://openmacapps.com/badge.svg)](https://openmacapps.com/apps/keykodes/) [![Latest release](https://img.shields.io/github/v/release/starbudweiser/kEYKODES)](https://github.com/starbudweiser/kEYKODES/releases/latest) [![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
 
-**Shows the DirectInput and ImGui key codes to put in Skyrim .ini files and mod menus.**  
-*Affiche les codes de touches DirectInput et ImGui à mettre dans les .ini de Skyrim et les menus de mods.*
+**Shows the DirectInput and ImGui key codes to put in Skyrim .ini files and mod menus.**
 
-🍏 **Native Mac app written in Swift, signed and notarized by Apple.** · *Appli Mac native écrite en Swift, signée et notarisée par Apple.*
+🇬🇧 English · 🇫🇷 [Français](#français)
 
-🇬🇧 [English](#-english) · 🇫🇷 [Français](#-français)
-
-💬 **Support & community:** [Discord](https://discord.gg/xdDVDPQsYs) · *Aide et communauté : [Discord](https://discord.gg/xdDVDPQsYs)*
-
-### About
+## About
 
 kEYKODES shows the DirectInput and ImGui key codes to put in Skyrim .ini files and mod menus. By Starbudweiser & Claude Code (Anthropic). MIT License, © 2026 Starbudweiser. Provided as is, without warranty of any kind. See **About kEYKODES** in the app menu.
 
----
-## 🇬🇧 English
-
-### What it does
+🍏 **Native Mac app written in Swift, signed and notarized by Apple.**
 
 Many mods ask for key codes in their .ini files (DirectInput scancodes) or ImGui menus. On a Mac keyboard, finding them is guesswork. Press a key in kEYKODES and it shows the code Skyrim expects, based on the key's physical position — exactly as under Windows.
 
-### Features
+## Features
 
 - Short .ini format (`0x39`) and decimal code (`57`) of the pressed key.
 - ImGuiKey value and modifier chords (Ctrl, Shift, Alt…) for mod menus.
@@ -39,14 +31,14 @@ Many mods ask for key codes in their .ini files (DirectInput scancodes) or ImGui
 - The first letter of the app's name now uses the colour of its logo everywhere it appears.
 - Version number aligned across the Skyrim Mac Toolkit.
 
-### Updates
-
-The app checks once a day whether a newer release exists on GitHub and offers to open the Nexus page, remind you later or skip that version. Nothing is downloaded or installed automatically. The full history is in [CHANGELOG.md](CHANGELOG.md).
-
 ### Screenshots
 
 ![Space bar: 0x39, decimal 57, ImGuiKey 524](docs/screenshots/02_key.png)
 *Space bar: 0x39, decimal 57, ImGuiKey 524*
+
+## Install
+
+**[Download the latest notarized release](https://github.com/starbudweiser/kEYKODES/releases/latest)** · requires **macOS 15 Sequoia** or later on Apple Silicon.
 
 ### Requirements
 
@@ -62,7 +54,11 @@ A Mac with **Apple Silicon** (M1 or later), **macOS 15 Sequoia** or later. Nativ
 1. Open kEYKODES and press the key you want.
 2. Copy the code into the mod's .ini file or menu.
 
-### Building from source
+### Updates
+
+The app checks once a day whether a newer release exists on GitHub and offers to open the Nexus page, remind you later or skip that version. Nothing is downloaded or installed automatically. The full history is in [CHANGELOG.md](CHANGELOG.md).
+
+## Build
 
 Requires Xcode (Swift 6). From the repository folder:
 
@@ -70,13 +66,27 @@ Requires Xcode (Swift 6). From the repository folder:
 ./build_app.sh
 ```
 
-### License
+## Languages
 
-Released under the **MIT License**: free to use, modify and share. Part of the **Skyrim Mac Toolkit**, a set of modding tools built for Skyrim players on Mac.
+English, French, Spanish and Italian. The app follows your Mac's preferred language automatically (English if it is none of these four).
+
+## Support
+
+💬 Help and community: [Skyrim Mac Toolkit Discord](https://discord.gg/jRS4rvynx6) · bug reports: [GitHub Issues](https://github.com/starbudweiser/kEYKODES/issues).
+
+## License
+
+Released under the **MIT License**: free to use, modify and share. Part of the **Skyrim Mac Toolkit**, a set of modding tools built for Skyrim players on Mac. See [LICENSE](LICENSE).
 
 ---
 
-## 🇫🇷 Français
+## Français
+
+**Affiche les codes de touches DirectInput et ImGui à mettre dans les .ini de Skyrim et les menus de mods.**
+
+🍏 *Appli Mac native écrite en Swift, signée et notarisée par Apple.*
+
+💬 Aide et communauté : [Discord du Skyrim Mac Toolkit](https://discord.gg/jRS4rvynx6)
 
 ### À quoi ça sert
 
