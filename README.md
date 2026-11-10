@@ -2,6 +2,8 @@
 
 # kEYKODES
 
+[![Listed on OpenMacApps](https://openmacapps.com/badge.svg)](https://openmacapps.com/apps/keykodes/)
+
 **Shows the DirectInput and ImGui key codes to put in Skyrim .ini files and mod menus.**  
 *Affiche les codes de touches DirectInput et ImGui à mettre dans les .ini de Skyrim et les menus de mods.*
 
