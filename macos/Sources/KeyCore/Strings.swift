@@ -89,4 +89,6 @@ let translations: [String: [String]] = [
     "Quitter kEYKODES": ["Quit kEYKODES", "Esci da kEYKODES", "Salir de kEYKODES"],
     "Fenêtre": ["Window", "Finestra", "Ventana"],
     "Réduire": ["Minimize", "Riduci", "Minimizar"],
+    "{n} octet": ["{n} byte", "{n} byte", "{n} byte"],
+    "{n} octets": ["{n} bytes", "{n} byte", "{n} bytes"],
 ]

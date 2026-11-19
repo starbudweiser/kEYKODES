@@ -438,5 +438,15 @@
   "Minimize",
   "Riduci",
   "Minimizar"
+ ],
+ "{n} octet": [
+  "{n} byte",
+  "{n} byte",
+  "{n} byte"
+ ],
+ "{n} octets": [
+  "{n} bytes",
+  "{n} byte",
+  "{n} bytes"
  ]
 }
